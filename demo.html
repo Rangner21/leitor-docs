@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEMO — Integração Ler Docs no Rota Sirius</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body>
+
+  <!-- ======================================================= -->
+  <!-- Fundo simulando a tela do Rota Sirius (só para contexto) -->
+  <!-- ======================================================= -->
+  <div class="fake-app-bg">
+    <div class="fake-topbar">
+      <div class="fake-logo">Rota<span>Sirius</span></div>
+      <div class="fake-nav">Roteirização · Programação · Mapa · Usuários</div>
+    </div>
+    <div class="fake-content">
+      <button id="btn-abrir-nova-nf" class="btn-primary">+ Nova NF</button>
+      <p class="demo-note">
+        ⚠️ Esta é uma página de DEMONSTRAÇÃO isolada, só para testar o fluxo
+        "Ler Docs" antes de implementar no Rota Sirius de verdade.
+        O visual do modal abaixo foi feito para se parecer com o seu,
+        mas os nomes exatos dos campos (id/name) ainda precisam ser
+        confirmados com o código real.
+      </p>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: Adicionar Nova NF (simulação do modal do Rota Sirius) -->
+  <!-- ======================================================= -->
+  <div id="modal-nova-nf" class="modal-overlay hidden">
+    <div class="modal-box nf-modal">
+      <div class="modal-header">
+        <h2>Adicionar Nova NF</h2>
+        <button id="btn-fechar-nf" class="modal-close">&times;</button>
+      </div>
+
+      <!-- Botão Ler Docs -->
+      <button id="btn-ler-docs" class="btn-ler-docs">
+        <span class="btn-icon">📄</span>
+        Ler Docs
+      </button>
+
+      <div class="nf-form">
+
+        <div class="form-group">
+          <label for="nf-numero">Número da NF:</label>
+          <input type="text" id="nf-numero" placeholder="" />
+        </div>
+
+        <div class="form-group">
+          <label>Tipo de operação:</label>
+          <div class="toggle-group">
+            <button type="button" class="toggle-btn active" data-tipo="Transporte">Transporte</button>
+            <button type="button" class="toggle-btn" data-tipo="Retira">Retira</button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nf-cep">CEP:</label>
+            <input type="text" id="nf-cep" placeholder="00000-000" />
+          </div>
+          <div class="form-group">
+            <label for="nf-cidade">Cidade:</label>
+            <input type="text" id="nf-cidade" placeholder="Ex: Recife" />
+          </div>
+          <div class="form-group form-group-uf">
+            <label for="nf-uf">UF:</label>
+            <select id="nf-uf">
+              <option value="">UF</option>
+              <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+              <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+              <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+              <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+              <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+              <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+              <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+              <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+              <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group form-group-wide">
+            <label for="nf-endereco">Endereço:</label>
+            <input type="text" id="nf-endereco" placeholder="Rua, Avenida, Bairro..." />
+          </div>
+          <div class="form-group">
+            <label for="nf-numero-casa">Número:</label>
+            <input type="text" id="nf-numero-casa" placeholder="Nº" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nf-frete">Valor de Frete:</label>
+          <input type="text" id="nf-frete" placeholder="" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nf-quantidade">Quantidade:</label>
+            <input type="text" id="nf-quantidade" placeholder="0" />
+          </div>
+          <div class="form-group">
+            <label for="nf-marca">Marca:</label>
+            <input type="text" id="nf-marca" placeholder="Marca" />
+          </div>
+          <div class="form-group">
+            <label for="nf-potencia">Potência:</label>
+            <input type="text" id="nf-potencia" placeholder="Ex: 650W" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nf-kam">KAM (Responsável):</label>
+          <select id="nf-kam">
+            <option value="">Selecione um KAM...</option>
+            <option value="Igor Pontes">Igor Pontes</option>
+            <option value="Ericka Moraes">Ericka Moraes</option>
+            <option value="Maria Silva">Maria Silva</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nf-observacao">Observação:</label>
+          <textarea id="nf-observacao" placeholder="Observações adicionais..."></textarea>
+        </div>
+
+        <div class="nf-actions">
+          <button type="button" class="btn-outline">Salvar</button>
+          <button type="button" class="btn-outline">Salvar e Fechar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: Ler Docs (o LEITOR DOC, agora em formato modal)  -->
+  <!-- ======================================================= -->
+  <div id="modal-ler-docs" class="modal-overlay hidden">
+    <div class="modal-box ler-docs-modal">
+      <div class="modal-header">
+        <h2><span class="accent-dot"></span> LEITOR <span class="accent">DOC</span></h2>
+        <button id="btn-fechar-ler-docs" class="modal-close">&times;</button>
+      </div>
+
+      <input type="file" id="file-input" accept="application/pdf" hidden />
+
+      <!-- Estado inicial -->
+      <section id="upload-section" class="card upload-card">
+        <button id="btn-ler-doc" class="btn-primary">
+          <span class="btn-icon">⬆</span>
+          Selecionar PDF
+        </button>
+        <p class="hint">Selecione uma Ordem de Produção (OP) em PDF</p>
+        <p id="file-name" class="file-name"></p>
+      </section>
+
+      <!-- Loading -->
+      <section id="loading-section" class="card loading-card hidden">
+        <div class="spinner"></div>
+        <p>Lendo documento...</p>
+      </section>
+
+      <!-- Erro -->
+      <section id="error-section" class="card error-card hidden">
+        <p id="error-message"></p>
+        <button id="btn-tentar-novamente" class="btn-secondary">Tentar novamente</button>
+      </section>
+
+      <!-- Resultado -->
+      <section id="result-section" class="results hidden">
+        <div class="card">
+          <div class="card-header"><h2>DADOS ENCONTRADOS</h2></div>
+          <div class="fields-grid" id="fields-grid"></div>
+          <div class="actions">
+            <button id="btn-copiar" class="btn-secondary">Copiar Resumo</button>
+            <button id="btn-transcrever" class="btn-primary">Transcrever</button>
+            <button id="btn-nova-leitura" class="btn-ghost">Ler outro documento</button>
+          </div>
+          <p id="copy-feedback" class="copy-feedback hidden">Resumo copiado para a área de transferência.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2>PRODUTOS IDENTIFICADOS</h2></div>
+          <ul id="products-list" class="products-list"></ul>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="demo.js"></script>
+</body>
+</html>

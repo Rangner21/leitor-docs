@@ -1,0 +1,277 @@
+/* ============================================================
+   DEMO — Estilos extra para simular o Rota Sirius + os modais
+   ============================================================ */
+
+.fake-app-bg {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.fake-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.fake-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.fake-logo span {
+  color: var(--green);
+}
+
+.fake-nav {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.fake-content {
+  padding: 60px 32px;
+  max-width: 600px;
+}
+
+.demo-note {
+  margin-top: 24px;
+  padding: 14px 16px;
+  background: rgba(255, 200, 0, 0.06);
+  border: 1px solid rgba(255, 200, 0, 0.25);
+  border-radius: var(--radius-sm);
+  color: #d8b559;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ---------- Modal overlay/base ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 14, 0.75);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+#modal-ler-docs {
+  z-index: 200; /* fica por cima do modal de Nova NF */
+}
+
+.modal-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 480px;
+  padding: 28px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accent-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  display: inline-block;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+/* ---------- Botão Ler Docs dentro do modal Nova NF ---------- */
+
+.btn-ler-docs {
+  width: 100%;
+  background: rgba(47, 214, 124, 0.08);
+  border: 1px dashed var(--green-dim);
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  transition: background 0.12s ease;
+}
+
+.btn-ler-docs:hover {
+  background: rgba(47, 214, 124, 0.14);
+}
+
+/* ---------- Formulário Nova NF ---------- */
+
+.nf-modal {
+  max-width: 520px;
+}
+
+.nf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-group-uf {
+  max-width: 90px;
+}
+
+.form-group-wide {
+  flex: 2;
+}
+
+/* Toggle Transporte / Retira */
+
+.toggle-group {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 11px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.toggle-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #06170f;
+}
+
+/* Ações do formulário */
+
+.nf-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-outline {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  border-color: var(--green-dim);
+}
+
+/* Modal Ler Docs: reaproveita .card/.btn-primary/etc do style.css,
+   só ajusta largura do modal em si */
+
+.ler-docs-modal {
+  max-width: 520px;
+}
+
+.ler-docs-modal .card {
+  margin-bottom: 16px;
+}
+
+.ler-docs-modal .upload-card {
+  padding: 32px 20px;
+}
+
+/* Destaque temporário nos campos que acabaram de ser preenchidos
+   automaticamente pelo Transcrever */
+.field-filled {
+  animation: highlight-fill 1.6s ease;
+}
+
+@keyframes highlight-fill {
+  0% { box-shadow: 0 0 0 2px rgba(47, 214, 124, 0.6); }
+  100% { box-shadow: 0 0 0 0 rgba(47, 214, 124, 0); }
+}
