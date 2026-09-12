@@ -3,7 +3,10 @@
 // de campo (#nf-numero, #nf-cep, etc.) serão os que já existem lá —
 // isso aqui é só para validar o FLUXO antes de mexer no sistema real.
 
-const API_URL = "http://127.0.0.1:5000/upload";
+// Caminho relativo: funciona tanto em produção (mesmo domínio da Vercel)
+// quanto localmente via `vercel dev`, que serve o front-end e a API
+// juntos na mesma origem. Não depende mais de localhost:5000/python app.py.
+const API_URL = "/upload";
 
 // ---------------------------------------------------------------------
 // Elementos: modais

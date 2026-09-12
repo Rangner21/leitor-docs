@@ -1,0 +1,64 @@
+========================================
+DEMO — Integração "Ler Docs" no modal Nova NF
+========================================
+
+O que é isto
+--------------
+Uma simulação de como vai ficar o botão "Ler Docs" dentro do modal
+"Adicionar Nova NF" do Rota Sirius — baseada no print que você mandou.
+
+Isto ainda NÃO é o Rota Sirius de verdade. É só para você testar o
+FLUXO completo (abrir Nova NF → clicar Ler Docs → escolher PDF →
+ver os dados → clicar Transcrever → ver os campos preenchidos)
+antes da gente implementar isso no seu sistema real.
+
+
+COMO TESTAR
+-------------
+1) Use o MESMO backend Python que você já tem rodando (app.py na
+   porta 5000). Se não estiver rodando, abra o terminal nesta pasta e
+   rode: python app.py
+
+2) Abra o arquivo "demo.html" com o Go Live (botão direito > Open with
+   Live Server) — NÃO é o index.html de antes, é o demo.html.
+
+3) Clique no botão verde "+ Nova NF" (arriba, esquerda).
+
+4) No modal que abrir, clique em "Ler Docs" (borda verde tracejada,
+   perto do topo).
+
+5) Escolha o PDF de uma OP. Depois de ler, vão aparecer os dados
+   encontrados, com os botões "Copiar Resumo" e "Transcrever".
+
+6) Clique em "Transcrever". O modal de leitura vai fechar sozinho, e
+   você vai ver os campos do formulário "Adicionar Nova NF" já
+   preenchidos (com uma piscadinha verde nos campos que foram
+   preenchidos automaticamente).
+
+7) Confira: os campos que o Python não conseguiu identificar (tipo
+   Valor de Frete quando for Transporte) ficam em branco, para você
+   preencher manualmente — exatamente como planejado.
+
+
+O QUE AINDA FALTA PARA SER REAL
+------------------------------------
+- Os nomes dos campos aqui (id="nf-cep", id="nf-uf", etc.) são um
+  CHUTE EDUCADO baseado no visual do seu print. No código real do
+  Rota Sirius, os nomes podem ser diferentes (ex: talvez seja
+  "zipcode" em vez de "cep", ou os campos sejam parte de um estado
+  do React/Vue em vez de inputs HTML simples).
+
+- O botão "Salvar e Fechar" aqui é só decorativo (não faz nada) —
+  no Rota Sirius de verdade ele provavelmente salva no banco de dados.
+
+- O Python ainda está rodando local (localhost:5000). No Rota Sirius
+  em produção, será preciso adaptar para rodar como função do Vercel
+  (isso é a Etapa 2 do nosso plano).
+
+
+PRÓXIMO PASSO
+----------------
+Me envie o código real do modal "Adicionar Nova NF" do seu projeto
+Rota Sirius (o arquivo .html/.js/.jsx onde ele está), para eu trocar
+esses nomes de campo "chutados" pelos valores reais, e aí sim
+prepararmos a versão definitiva para colocar no ar.
